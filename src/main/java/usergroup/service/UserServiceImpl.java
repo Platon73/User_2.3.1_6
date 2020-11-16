@@ -1,32 +1,41 @@
 package usergroup.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import usergroup.dao.UserDAO;
+import usergroup.dao.UserDAOImpl;
 import usergroup.model.User;
-
 import java.util.List;
 
+@Service
 public class UserServiceImpl implements UserService{
-    @Override
+
+    @Autowired
+    private UserDAO userDAO = new UserDAOImpl();
+
+    @Transactional
     public List<User> allUsers() {
-        return null;
+        return userDAO.allUsers();
     }
 
-    @Override
+    @Transactional
     public void add(User user) {
-
+        userDAO.add(user);
     }
 
-    @Override
+    @Transactional
     public void delete(User user) {
-
+        userDAO.delete(user);
     }
 
-    @Override
+    @Transactional
     public void edit(User user) {
-
+        userDAO.edit(user);
     }
 
-    @Override
+    @Transactional
     public User getById(int id) {
-        return null;
+        return userDAO.getById(id);
     }
 }
